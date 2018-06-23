@@ -21,7 +21,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "publish": "npm publish --registry https://registry.npmjs.org"
   },
   "dependencies": {
     "md5": "^2.2.1"
