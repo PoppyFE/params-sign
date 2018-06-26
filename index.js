@@ -1,4 +1,4 @@
-import md5 from 'md5';
+const md5 = require('md5');
 
 function stringify(value) {
   if (value === null || value === undefined) {
@@ -20,11 +20,7 @@ function sign(data, secret, options) {
 	const contentParts = [];
 	const {ignoreKeys: {}} = options;
 	Object.keys(data).filter((key) => {
-			if (key.startsWith('_')) {
-				return false;
-			}
-
-			if (ignoreKeys.hasOwnProperty(key)) {
+			if (ignoreKeys.hasOwnProperty(key) || key.startsWith('_')) {
 				return false;
 			}
 
@@ -36,15 +32,14 @@ function sign(data, secret, options) {
 	});
 	contentParts.push(`sign=${stringify(secret)}`);
 	// 加hash
-	const contentHash = contentParts.join('&');
-	return md5(contentHash);
+	return md5(contentParts.join('&'));
 }
 
 function checkSign(data, secret, signature, options) {
 	return sign(data, secret, options) === signature;
 }
 
-export default {
-	sign,
-	checkSign,
-}
+module.exports = {
+  sign,
+  checkSign
+};

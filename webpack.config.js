@@ -22,4 +22,4 @@ const webConfig = {
   }
 };
 
-module.exports = [nodeConfig, webConfig];
+module.exports = webConfig;// [nodeConfig, webConfig];
