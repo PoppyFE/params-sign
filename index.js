@@ -18,7 +18,7 @@ function sign(data, secret, options) {
 		throw new Error('data must be an Object!');
 	}
 	const contentParts = [];
-	const {ignoreKeys: {}} = options;
+	const {ignoreKeys = {}} = options;
 	Object.keys(data).filter((key) => {
 			if (ignoreKeys.hasOwnProperty(key) || key.startsWith('_')) {
 				return false;
