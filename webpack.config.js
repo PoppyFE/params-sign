@@ -18,7 +18,9 @@ const webConfig = {
   target: 'web',
   output: {
     path: resolve('./dist'),
-    filename: 'params-sign.min.js',
+    filename: 'params-sign.js',
+    library: 'params-sign',
+    libraryTarget: 'umd',
   }
 };
 

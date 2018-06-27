@@ -1,10 +1,10 @@
 {
   "name": "params-sign",
   "description": "js function for hashing messages with MD5",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "author": "xywalk",
-  "browser": "./dist/params-sign.min.js",
-  "main": "./index.js",
+  "main": "./dist/params-sign.js",
+  "module": "./index.js",
   "tags": [
     "md5",
     "hash",
