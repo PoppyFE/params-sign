@@ -13,13 +13,17 @@ function stringify(value) {
   return JSON.stringify(value);
 }
 
-function sign(data, secret, options) {
+function sign(data, secret, options = {}) {
 	if (typeof data !== 'object') {
 		throw new Error('data must be an Object!');
 	}
 	const contentParts = [];
-	const {ignoreKeys = {}} = options;
+	const {specifiedKeys, ignoreKeys = {}} = options;
 	Object.keys(data).filter((key) => {
+			if (specifiedKeys && specifiedKeys.hasOwnProperty(key)) {
+				return true;
+			}
+
 			if (ignoreKeys.hasOwnProperty(key) || key.startsWith('_')) {
 				return false;
 			}
